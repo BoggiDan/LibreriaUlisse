@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/sfondo">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="146dp"
+        android:layout_height="43dp"
+        android:text="Login"
+        android:textSize="30dp"
+        android:textColor="@color/black"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:shadowColor="@color/black"
+        android:textColor="@color/black"
+        android:hint="Email"
+        android:textColorHint="@color/grey"
+        android:backgroundTint="@color/grey"/>
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:textColorHint="@color/grey"
+        android:textColor="@color/black"
+        android:inputType="textPassword"
+        android:backgroundTint="@color/grey"/>
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:onClick="click"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/blu"/>
+
+</LinearLayout>
