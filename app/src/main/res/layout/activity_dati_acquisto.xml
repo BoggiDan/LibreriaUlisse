@@ -26,21 +26,75 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_marginTop="1dp"
-        android:orientation="vertical"
+        android:layout_height="320dp"
         android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dati">
+        app:layout_constraintTop_toBottomOf="@+id/dati"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="20dp"
+            android:text="Inserisci i seguenti dati per completare l'ordine:"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
 
         <EditText
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/grey"
             android:hint="Nome"
-            android:textColorHint="@color/grey" />
+            android:paddingStart="10dp"
+            android:textSize="16dp"
+            android:textColorHint="@color/grey"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/grey"
+            android:hint="Cognome"
+            android:textSize="16dp"
+            android:paddingStart="10dp"
+            android:textColorHint="@color/grey"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/grey"
+            android:textSize="16dp"
+            android:hint="Email"
+            android:paddingStart="10dp"
+            android:textColorHint="@color/grey"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/grey"
+            android:hint="Telefono"
+            android:textSize="16dp"
+            android:paddingStart="10dp"
+            android:textColorHint="@color/grey"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/grey"
+            android:hint="Indirizzo"
+            android:textSize="16dp"
+            android:paddingStart="10dp"
+            android:textColorHint="@color/grey"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 

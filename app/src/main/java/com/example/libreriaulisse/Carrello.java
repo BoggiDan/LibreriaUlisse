@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -33,6 +34,7 @@ public class Carrello extends AppCompatActivity {
     String url = "https://danieleboggian3g.altervista.org/sitoCarrelloQuery/api/stampacarrello.php";
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    TextView costoTot;
 
 
     @Override
@@ -46,79 +48,7 @@ public class Carrello extends AppCompatActivity {
         ImageView verificato = findViewById(R.id.next);
         sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         editor = sharedPreferences.edit();
-
-        /*JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
-                response -> {
-                    try {
-                        JSONArray libri = response.getJSONArray("Libri");
-                        for (int i = 0; i < libri.length(); i++) {
-                            JSONObject libro = libri.getJSONObject(i);
-                            Integer id = libro.getInt("id");
-                            String titolo = libro.getString("titolo");
-                            String autore = libro.getString("autore");
-                            String urlImage = libro.getString("url");
-                            String genere = libro.getString("genere");
-                            String descrizione = libro.getString("descrizione");
-                            Double prezzo = libro.getDouble("prezzo");
-                            Integer quantita = libro.getInt("quantita");
-
-                            modelloLibri.add(new ModelloLibro(id, titolo, autore, genere, descrizione, prezzo, quantita, urlImage));
-                        }
-                        //Log.i("Dati", modelloLibro.toString());
-                        modelloLibri.forEach(e-> Log.i("Dati", e.toString()));
-                        AdapterCarrello adapter = new AdapterCarrello(modelloLibri, (int id) -> {
-                            //Log.i("rmvClick", id + "");
-                            removeProductRequest(id,1);
-                        });
-                        recyclerView.setAdapter(adapter);
-                    } catch (Exception e) {
-                        Log.e("Errorr", e.getMessage());
-                    }
-                },
-                error -> Log.e("Error", error.getMessage())
-        );
-        requestQueue.add(jsonObjectRequest);*/
-
-
-        /*StringRequest request = new StringRequest(Request.Method.POST, url,
-                response -> {
-                    try {
-                        JSONArray libri = response.getJSONArray("Libri");
-                        for (int i = 0; i < libri.length(); i++) {
-                            JSONObject libro = libri.getJSONObject(i);
-                            Integer id = libro.getInt("id");
-                            String titolo = libro.getString("titolo");
-                            String autore = libro.getString("autore");
-                            String urlImage = libro.getString("url");
-                            String genere = libro.getString("genere");
-                            String descrizione = libro.getString("descrizione");
-                            Double prezzo = libro.getDouble("prezzo");
-                            Integer quantita = libro.getInt("quantita");
-
-                            modelloLibri.add(new ModelloLibro(id, titolo, autore, genere, descrizione, prezzo, quantita, urlImage));
-                        }
-                        //Log.i("Dati", modelloLibro.toString());
-                        modelloLibri.forEach(e-> Log.i("Dati", e.toString()));
-                        AdapterCarrello adapter = new AdapterCarrello(modelloLibri, (int id) -> {
-                            //Log.i("rmvClick", id + "");
-                            removeProductRequest(id,1);
-                        });
-                        recyclerView.setAdapter(adapter);
-                    } catch (Exception e) {
-                        Log.e("Errorr", e.getMessage());
-                    }
-                },
-                error -> Log.e("Error", error.getMessage())
-        {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-                params.put("session_id", sharedPreferences.getString("session_id", null));
-                return params;
-            }
-        };
-        );
-        requestQueue.add(jsonObjectRequest);*/
+        costoTot = findViewById(R.id.costoTot);
 
         stampaProdotti();
 
@@ -147,6 +77,7 @@ public class Carrello extends AppCompatActivity {
                 (response) -> {
                     Log.i("Remove", response.toString());
                     stampaProdotti();
+                    calcolaCostoTotale();
                 },
                 (error)-> {
                     Log.e("RemoveErr", error.getMessage());
@@ -194,6 +125,7 @@ public class Carrello extends AppCompatActivity {
                         removeProductRequest(id,1);
                     });
                     recyclerView.setAdapter(adapter);
+                    calcolaCostoTotale();
                 },
                 error -> Log.e("Error", error.getMessage())
         ){
@@ -205,5 +137,13 @@ public class Carrello extends AppCompatActivity {
             }
         };
         requestQueue.add(request);
+    }
+
+    private void calcolaCostoTotale() {
+        double totale = 0.0;
+        for (ModelloLibro libro : modelloLibri) {
+            totale += libro.getPrezzo() * libro.getQuantita();
+        }
+        costoTot.setText(String.format("Costo totale: " + "%.2f" + "€", totale));
     }
 }

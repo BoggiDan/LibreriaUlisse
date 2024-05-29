@@ -50,6 +50,7 @@ public class Home extends AppCompatActivity {
         textView3.bringToFront();
         ImageView ricerca = findViewById(R.id.ricerca);
         ImageView carrello = findViewById(R.id.carrello);
+        ImageView logout = findViewById(R.id.logout);
         sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
@@ -104,6 +105,14 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Home.this, Carrello.class);
+                startActivity(intent);
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Home.this, Login.class);
                 startActivity(intent);
             }
         });

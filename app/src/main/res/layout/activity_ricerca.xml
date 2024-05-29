@@ -25,18 +25,37 @@
         app:layout_constraintVertical_bias="0.000" />
 
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/white"
-        android:hint="Cerca"
-        android:paddingStart="8dp"
-        android:textColorHint="@color/grey"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+        <EditText
+            android:id="@+id/ricercaProdotto"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:hint="Cerca"
+            android:paddingStart="8dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <ImageButton
+            android:id="@+id/findBtn"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_search" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -57,17 +76,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/back" />
 
+        <ImageView
+            android:id="@+id/cart2"
+            android:layout_width="111dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/cart" />
+
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView3"
         android:layout_width="match_parent"
         android:layout_height="504dp"
-        android:layout_marginTop="1dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
