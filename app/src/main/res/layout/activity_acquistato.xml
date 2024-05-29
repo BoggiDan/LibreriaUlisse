@@ -44,4 +44,19 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Acquisto verificato con successo."
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayoutProdotti"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/acquistato"
+        app:layout_constraintVertical_bias="0.145" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

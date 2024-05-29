@@ -21,9 +21,6 @@ public class DatiAcquisto extends AppCompatActivity {
 
 
 
-
-
-
         indietro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
